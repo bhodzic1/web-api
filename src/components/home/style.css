@@ -19,3 +19,20 @@
     margin-top: 5%;
     margin-left: 10%;
 }
+
+.searchedHome {
+    width: 80%;
+    margin-top: 1%;
+    margin-left: 10%;
+}
+
+.searchQueryHome {
+    font-size: 28px;
+    font-weight: bold;
+}
+
+span {
+    font-size: 14px;
+    font-weight: bold;
+    color: grey;
+}

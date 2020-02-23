@@ -1,18 +1,13 @@
 import React from 'react';
 import '../gif/style.css';
 
-/*
-<div className="">
-            <div className="containerGif">
-                <img src={ image } alt=""></img>
-            </div>
-        </div>
-*/
 
-const Gif = ({image}) => {
+
+
+const Gif = ({image, selected}) => {
     return(
         <div className="containerGif">
-            <div>
+            <div onClick={() => {selected(image)}}>
                 <img src={image} alt=""></img>
             </div>
         </div>

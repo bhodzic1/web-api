@@ -2,8 +2,6 @@ import React from 'react';
 import { Nav, Navbar } from 'react-bootstrap';
 
 
-
-
 export const NavigationBar = () => (
     <Navbar bg="light" variant="light">
         <Navbar.Brand href="/">Navbar</Navbar.Brand>
