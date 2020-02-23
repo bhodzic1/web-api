@@ -41,14 +41,9 @@ const Home = () => {
     }
 
     const gifSelection = (answer, id) => {
-       setSelectedGif(answer)
-       setIsSelected(true);
+        setSelectedGif(answer)
+        setIsSelected(true);
         setGifId(id);
-       console.log("berneseee")
-        console.log(isSelected)
-        console.log("berneseee")
-        console.log(answer)
-        console.log(query)
     }
 
     return (
@@ -64,7 +59,7 @@ const Home = () => {
             </div>
             <div className="containerHome">
                 {gifs.map(gif => (
-                    <Gif image={gif.images.original.url} selected={answer => gifSelection(answer, gif.id)} ></Gif>
+                    <Link><Gif image={gif.images.original.url} selected={answer => gifSelection(answer, gif.id)} ></Gif></Link>
                 ))}
 
                 {
