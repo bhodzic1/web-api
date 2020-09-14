@@ -3,6 +3,7 @@ import '../gif/style.css';
 
 
 
+
 const Gif = ({ gif }) => {
     return(
         <div className="containerGif">
