@@ -3,12 +3,11 @@ import '../gif/style.css';
 
 
 
-
-const Gif = ({image, selected}) => {
+const Gif = ({ gif }) => {
     return(
         <div className="containerGif">
-            <div onClick={() => {selected(image)}}>
-                <img src={image} alt=""></img>
+            <div>
+                <img src={ gif.images.original.url } alt=""></img>
             </div>
         </div>
     );
