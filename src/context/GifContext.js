@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useReducer } from 'react';
+import React, { useReducer } from 'react';
 import { GifReducer } from './GifReducer';
 
 
@@ -14,11 +14,6 @@ export const GifProvider = (props) => {
         const localDataQuery = localStorage.getItem('gifsQuery') ? JSON.parse(localStorage.getItem('gifsQuery')) : [];
         return { gifs: localDataGifs, query: localDataQuery };
     });
-
-    /*useEffect(() => {
-        localStorage.setItem('gifsQuery', JSON.stringify(state.query > 0 ? state.query : []));
-        localStorage.setItem('gifs', JSON.stringify(state.gifs.length > 0 ? state.gifs : []));
-    }, [])  */
     
     const updateGifsList = payload => {
         dispatch({ type: 'UPDATE_GIF_LIST', payload });

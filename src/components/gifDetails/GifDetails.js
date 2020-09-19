@@ -1,23 +1,24 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Card } from 'react-bootstrap';
 import { useLocation } from 'react-router-dom';
+import './style.css';
 
 const GifDetails = () => {
     let location = useLocation();
     return (
-        <div>
+        <div className="detailsDiv">
             <Card>
                 <Card.Header variant="top"  >
-                    <p> { location.state.id } </p>
+                    <img src={ location.state.images.original.url } alt={ "123" } />
                 </Card.Header>
                 <Card.Body>
-                    <Card.Title>Card title</Card.Title>
+                    <Card.Title> { location.state.username } </Card.Title>
                     <Card.Text>
-                        
+                        { location.state.title }
                     </Card.Text>
                 </Card.Body>
                 <Card.Footer>
-                    <small className="text-muted">Imported: </small>
+                    <small className="text-muted">Imported: { location.state.import_datetime }</small>
                 </Card.Footer>
             </Card>
         </div>

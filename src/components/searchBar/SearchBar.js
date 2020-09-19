@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { GifContext } from '../../context/GifContext';
-
+import { Form, FormControl, Button } from 'react-bootstrap';
+import './style.css';
 
 const SearchBar = () => {
     const { updateGifsList, query, setQuery } = useContext(GifContext);
@@ -19,9 +20,11 @@ const SearchBar = () => {
     }
 
     return (
-        <div>
-            <input type="text" value={ query } onChange={ handleChangeInput } />
-            <button onClick={ handleSubmit }>SEARCH</button> 
+        <div className="searchBar"> 
+            <Form inline>
+                <FormControl type="text" placeholder="Search" className="mr-sm-2" value={ query } onChange={handleChangeInput} />
+                <Button variant="outline-primary" onClick={ handleSubmit } type="submit">Search</Button>
+            </Form>
         </div>
     )
 }
