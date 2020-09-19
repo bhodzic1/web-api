@@ -8,7 +8,7 @@ const GifList = () => {
     return (
         <div>
             { gifs.map(gif => (
-                <Link key={ gif.id } to={{ pathname:`/details/${gif.id}` }}><Gif key={ gif.id } gif={ gif }></Gif></Link>
+                <Link key={ gif.id } to={{ pathname:`/details/${gif.id}`, state: gif }}><Gif key={ gif.id } gif={ gif }></Gif></Link>
             )) }
         </div>
     )

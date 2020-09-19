@@ -1,30 +1,37 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useReducer } from 'react';
+import { GifReducer } from './GifReducer';
 
 
 export const GifContext = React.createContext();
 
+const gifsStorage = localStorage.getItem('gifs') ? JSON.parse(localStorage.getItem('gifs')) : [];
+const queryStorage = localStorage.getItem('gifsQuery') ? JSON.parse(localStorage.getItem('gifsQuery')) : [];
+const initialState = { gifs: gifsStorage, query: queryStorage };
 
 export const GifProvider = (props) => {
-    const [gifs, setGifs] = useState(JSON.parse(localStorage.getItem('gifs')));
-    const [query, setQuery] = useState(JSON.parse(localStorage.getItem('gifsQuery')));
+    const [state, dispatch] = useReducer(GifReducer, initialState, () => {
+        const localDataGifs = localStorage.getItem('gifs') ? JSON.parse(localStorage.getItem('gifs')) : [];
+        const localDataQuery = localStorage.getItem('gifsQuery') ? JSON.parse(localStorage.getItem('gifsQuery')) : [];
+        return { gifs: localDataGifs, query: localDataQuery };
+    });
 
-    useEffect(() => {
-        localStorage.setItem('gifs', JSON.stringify(gifs.length > 0 ? gifs : []))
-        localStorage.setItem('gifsQuery', JSON.stringify(query.length > 0 ? query : []))
-    })
+    /*useEffect(() => {
+        localStorage.setItem('gifsQuery', JSON.stringify(state.query > 0 ? state.query : []));
+        localStorage.setItem('gifs', JSON.stringify(state.gifs.length > 0 ? state.gifs : []));
+    }, [])  */
+    
+    const updateGifsList = payload => {
+        dispatch({ type: 'UPDATE_GIF_LIST', payload });
+    }
 
-    const updateGifsList = async (query) => {
-        const response = await fetch(`http://api.giphy.com/v1/gifs/search?&api_key=dc6zaTOxFJmzC&q=${query}`);
-        const data = await response.json();
-        setGifs(data.data);
+    const setQuery = payload => {
+        dispatch({ type: 'SET_QUERY', payload });
     }
 
     const gifContextValues = {
-        gifs,
-        setGifs,
-        query,
         setQuery,
-        updateGifsList
+        updateGifsList,
+        ...state
     }
 
     return (
